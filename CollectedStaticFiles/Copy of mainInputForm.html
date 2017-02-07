@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block bodyContent %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="btn-group col-lg-12">
+			<button class="btn btn-info" id="SubmitBtn">提交</button>	
+			<button class="btn btn-info">分单</button>
+			<button class="btn btn-info">同步</button>
+			<button class="btn btn-info">删除</button>
+			<button class="btn btn-info">计算</button>
+			<button class="btn btn-info">借鉴</button>
+			<button class="btn btn-info">尺寸</button>
+			<button class="btn btn-info">费用</button>
+			<button class="btn btn-info">上传</button>
+			<button class="btn btn-info">关闭</button>
+			<button class="btn btn-info">提闭</button>
+			<button class="btn btn-info">清空</button>
+			<button class="btn btn-info">唛头</button>
+			<button class="btn btn-info">文档</button>
+			<button class="btn btn-info">打印</button>
+			<button class="btn btn-info">做账</button>
+			<button class="btn btn-info">传真</button>
+			<button class="btn btn-info">Hub</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-4 panel">
+			<div class="row">
+				<label class="panel-heading col-lg-12" align="center"> 快捷查询 </label>
+			</div>
+			<div class="row">
+				<label class="col-md-3 control-label">主单号:</label> 
+				<label class="col-md-9 control-label dataElemMark" id="mainID">{{mainOrderID}}</label>
+			</div>
+		</div>
+
+		<div class="col-lg-4 panel">
+			<div class="row">
+				<label class="panel-heading col-lg-12" align="center">主单直接录入</label>
+			</div>
+			<div class="row">
+				<label class="col-md-6">主：不含</label>
+				<label class="col-md-6">分：不含</label>
+			</div>
+		</div>
+
+		<div class="col-lg-4 panel">
+			<div class="row">
+				<input type="checkbox" id="inlineCheckbox1" value="option1">主单作废
+				<input type="checkbox" id="inlineCheckbox2" value="option1">操作货物
+			</div>
+			<div class="row">
+				<input type="checkbox" id="inlineCheckbox3" value="option1">最低报价
+				<input type="checkbox" id="inlineCheckbox4" value="option1">锁定同步
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12" style="overflow-x:auto">
+			<table border="1" style="width: 500px">
+				<tr>
+					<td><label>MAWB NO</label></td>
+					<td><input type="text" class="dataElemMark" id="MAWBNO"></input></td>
+					<td>主单日期</td>
+					<td><input id="mainOrderInputDate" type="text" class="easyui-datebox dataElemMark dataElemMarkDate" id="OrderDate" required="required" /></td>
+					<td><label>主单公司*</label></td>
+					<td><input type="text" class="dataElemMark" id="OrderComp" value=""></input>
+					</td>
+					<td><label>录入员</label></td>
+					<td><input type="text" class="dataElemMark" id="OrderSubmitor" value=""></input>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><span style="color: blue">发货人名称及地址*</span>&nbsp&nbsp&nbsp&nbsp<span>业务</span></td>
+					<td><input name="status1" value="0" class="dataElemMark" id="ShipperNameAndAddr"/></td>
+					<td><span>货物类型*</span></td>
+					<td><input class="dataElemMark" id="GoodsType" /></td>
+					<td><span>其他费用金额</span></td>
+					<td><input class="dataElemMark" id="OtherCostVal" /></td>
+				</tr>
+				<tr>
+					<td colspan=" 5 "><label></label></td>
+					<td colspan=" 2 "><label style="backgrand: red"></label></td>
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+					<td><span style="color: blue">收货人名称及地址*</span>&nbsp&nbsp&nbsp&nbsp</td>
+					<td><input class="dataElemMark" id="ReceiverNameAndAddr" /></td>
+					<td><span>借单状态</span></td>
+					<td><input name="status1" id="BorrowStatus" class="dataElemMark"/></td>
+				</tr>
+				<tr>
+					<td colspan=" 5 "><label></label></td>
+					<td><label style="backgrand: red">其他费用详情:</label>
+					<td><label id="OtherCostDetail" class="dataElemMark"></label></td>
+					</td>
+				</tr>
+				<tr>
+					<td><label></label></td>
+				</tr>
+				<tr>
+					<td><label>制单公司</label></td>
+					<td><label>IATA代码</label></td>
+					<td><label>始发站</label></td>
+					<td><label>目的地*</label></td>
+					<td><label>TO</label></td>
+					<td><label>BY</label></td>
+					<td><label>Account No</label></td>
+					<td><label>板号</label></td>
+				</tr>
+				<tr>
+					<td><input type="text" value=""></input>
+					</td>
+					<td><input type="text" value=""></input>
+					</td>
+					<td><input type="text" value=""></input>
+					</td>
+					<td><label></label></td>
+					<td><label></label></td>
+					<td><label></label></td>
+					<td><input name="status1"  value="0 " /></td>
+					<td><input type="text" value=""></input>
+					</td>
+				</tr>
+				<tr>
+					<td><label>航空公司*</label></td>
+					<td><label>航班号</label></td>
+					<td><label>航班日期</label></td>
+					<td><label>币值*</label></td>
+					<td><label>预付到付</label></td>
+					<td><label>NVD</label></td>
+					<td><label>NCV</label></td>
+					<td><label>NIL</label></td>
+					<td><label>主单状态</label></td>
+					<td><label>统计状态</label></td>
+				</tr>
+				<tr>
+					<td><label id="airCompany" class="dataElemMark">{{airCompany}}</label></td>
+					<td><label></label></td>
+					<td><input id="inputDate" type="text" class="easyui-datebox"
+						value="{{inputDate}}" required="required" /></td>
+					<td><input name="status1 "  value="0 " />
+					</td>
+					<td><input name="status1 "  value="0 " />
+					</td>
+					<td><label></label></td>
+					<td><label></label></td>
+					<td><label></label></td>
+					<td><input name="status1 "  value="0 " />
+					</td>
+					<td><input name="status1" value="0 " /></td>
+				</tr>
+				<tr>
+					<td><label>主单件数/单位</label></td>
+					<td><label>主单毛重</label></td>
+					<td><label>KG/LB</label></td>
+					<td colspan="2"><label>等级</label> <input type="checkbox"
+						id="inlineCheckbox1" value="option1"> <span
+						style="color: green">靠级</span> <span>商品代码</span></td>
+					<td><label>计费重</label></td>
+					<td><label>主单运价</label></td>
+					<td><label style="color: red">主单纯运费</label></td>
+					<td><label>主单运费</label></td>
+				</tr>
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td><input type="text"/></td>
+								<td><input name="status1"  value="0 "/></td>
+							</tr>
+						</table>
+					</td>
+					<td><input type="text " value=" " ></input>
+					</td>
+					<td><input type="text " value=" " ></input>
+					</td>
+					<td><input name="status1 "  value="0 " />
+					</td>
+					<td><input name="status1 "  value="0 " />
+					</td>
+					<td><input type="text " value=" " ></input>
+					</td>
+					<td><input type="text " value=" " ></input>
+					</td>
+					<td><input type="text " value=" " ></input>
+					</td>
+					<td><input type="text " value=" " ></input>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3"><span style="color: green; margin-left: 30%">货名</span>
+						<input type="checkbox" id="inlineCheckbox1" value="option1">
+						<span style="color: red">CONSOL</span></td>
+					<td colspan="2"><span style="margin-left: 30%">尺寸</span></td>
+					<td colspan="2"><span style="margin-left: 30%">体积</span> <input
+						type="checkbox" id="inlineCheckbox1" value="option1"> <span
+						style="color: green">Handling Info</span></td>
+					<td><span>操作地点</span></td>
+					<td><input name="status1 "  value="0 " />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="text" style="width: 100%"
+						value=" "></input></td>
+					<td colspan="2"><input type="text " style="width: 100%"
+						value=" " ></input></td>
+					<td colspan="2"><input type="text " style="width: 100%"
+						value=" " ></input></td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="{% static "handlerJS/mainInputForm.js" %}"></script>
+{% endblock %}
+
+ 
