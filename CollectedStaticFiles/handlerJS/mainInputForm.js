@@ -1,4 +1,5 @@
 $(document).ready(
+
 		function() {
 			var GET = $.urlGet(); //获取URL的Get参数
 			var inputDate = GET['mainOrderInputDate']; //取得输入日期

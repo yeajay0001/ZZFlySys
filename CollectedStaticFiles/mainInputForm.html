@@ -2,11 +2,15 @@
 {% load staticfiles %}
 
 {% block bodyContent %}
+
 <div class="container-fluid">
 	<div class="row">
 		<div title=" Master Bill " style="padding:10px">
 	
 	   <div style="margin-bottom:20px">
+	   <p>
+	   <input class="easyui-textbox dataElemMark" id="mainOrderID" style="width:30%" data-options="label:'主单号:',required:true"/>
+       </p>
        <input class="easyui-textbox dataElemMark" id="MAWBNO" style="width:30%" data-options="label:'MAWB NO:',required:true"/>
 	   <input class="easyui-textbox dataElemMark" id="MAWBNO_" style="width:30%" data-options="label:'',required:true"/>
 		主单日期
@@ -73,16 +77,18 @@
 	   <input type="radio" name="lang" id="pp" value="pp" checked="checked"><span>pp</span>
        <input type="radio" name="lang" id="cc" value="cc"><span>CC</span>
 	   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	   <input class="easyui-textbox dataElemMark" id="NVD" style="width:30%" data-options="label:'check NVD:'" value="NVD"/>
+	   <input class="easyui-textbox dataElemMark" id="NVD" style="width:30%" data-options="label:'NVD:'" value="NVD"/>
 	     </p>
 		 <p>
-		<input class="easyui-textbox dataElemMark" id="NVC" style="width:30%" data-options="label:'check NVC:'" value="NVC"/>
+		<input class="easyui-textbox dataElemMark" id="NVC" style="width:30%" data-options="label:' NVC:'" value="NVC"/>
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<input class="easyui-textbox dataElemMark" id="NIL" style="width:30%" data-options="label:'chceck NIL:'" value="NIL"/>
+		<input class="easyui-textbox dataElemMark" id="NIL" style="width:30%" data-options="label:' NIL:'" value="NIL"/>
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<input class="easyui-textbox dataElemMark" id="masterbiilstatus" style="width:30%" data-options="label:'check主单状态:'" value="unknown"/>
+		主单状态:
+		<input class="dataElemMark" id="masterbiilstatus" style="width:30%" data-options="label:'主单状态:'" value="unknown"/>
 	  </p>
 	  <p>
+	 
 	  <input class="easyui-textbox dataElemMark" id="StatisticStatus" style="width:30%" data-options="label:'统计状态:'" value=""/>
 	  </p>
 	   </div>
@@ -114,9 +120,9 @@
 	   <p>.............</p>
 	   <input class="easyui-textbox dataElemMark" id="CONSOL" style="width:30%" data-options="label:'CONSOL'" value=""/>
 	     &nbsp&nbsp
-		<input class="easyui-textbox dataElemMark"  id="Size" style="width:30%" data-options="label:'check尺寸:'" value=""/>
+		<a href="javascript:void(0)" class="easyui-linkbutton"  style="width:60px" id="Size">尺寸</a>
 	     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	   <input class="easyui-textbox dataElemMark" id="volume" style="width:30%" data-options="label:'check体积 Handling Info:'" value=""/>
+	   <input class="dataElemMark" id="volume" style="width:30%" data-options="label:'体积 Handling Info:'" value="体积"/>
 	   <p>
 	    <select class="easyui-combobox" id="location" label="操作地点:"  style="width:30%;">
 		<option value="AL">BJS</option>
@@ -129,12 +135,18 @@
 	   <div>
        <a href="javascript:void(0)" class="easyui-linkbutton" style="width:80px" id="SubmitBtn">Submit</a>
        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">Clear</a>
-       </div>
+	    <a href="javascript:void(0)" class="easyui-linkbutton"  style="width:80px" id="Print">Print</a>
+	   </div>
+	   
+	   <div id="addSize">
+	   
+	   </div>
 	</div>
 
 </div>
 
 <script type="text/javascript" src="{% static "handlerJS/mainInputForm.js" %}"></script>
+<script type="text/javascript" src="{% static "handlerJS/order.js" %}"></script>
 {% endblock %}
 
  

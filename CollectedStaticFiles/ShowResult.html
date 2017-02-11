@@ -1,14 +1,14 @@
-{% extends "base.html" %} 
+{% extends "base.html"%} 
 {% load staticfiles %}
-
 {% block bodyContent %}
 <script type="text/javascript" src="{% static "handlerJS/SingleOrderForm.js" %}"></script>
 
 <div class="container">
 
 	<div class="row">
-		<table id="dg" title="My Users"  class="col-lg-12 easyui-datagrid" fitColumns="true"
+		<table id="dg" title="My orders"  class="col-lg-12 easyui-datagrid" style="width:800px;height:250px"fitColumns="true"
 		toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+
 			<thead>
 				<tr>
 					<th field="MainID" width="50">主单ID</th>
@@ -37,11 +37,54 @@
 			</tbody>  
 		</table>
 		
-		<div id="toolbar">
-	        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除</a>
-   		</div>
+		
 	</div>
-</div>
+	
+	<p>
+	<div class="row">
+    <div id="mymodfiy">
+	   <a href="javascript:void(0)" class="easyui-linkbutton " iconCls="icon-remove" plain="true" onclick="destroyUser()">Modify</a>
+	   <p>
+	   <input class="easyui-textbox dataElemMark" id="NVD" style="width:20%" value="NVD" data-options="label:''" />
+	   &nbsp&nbsp
+	   <input class="easyui-textbox dataElemMark" id="NVC" style="width:20%" value="NVC" data-options="label:''" />
+		&nbsp&nbsp
+	   <input class="easyui-textbox dataElemMark" id="NIL" style="width:20%" value="NIL" data-options="label:''" />
+	  </p>
+   	</div>
+	</div>
+	</p>
+	
+	<div class="row">
+	<div id="toolbar">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+   	</div>
+	<div>
+	 <table id="dg" title="My Users" class="easyui-datagrid" style="width:800px;height:250px"
+            url="get_users.php"
+            toolbar="#toolbar" pagination="true"
+            rownumbers="true" fitColumns="true" singleSelect="true">
+        <thead>
+            <tr>
+                <th field="firstname" width="50">First Name</th>
+                <th field="lastname" width="50">Last Name</th>
+                <th field="phone" width="50">Phone</th>
+                <th field="email" width="50">Email</th>
+            </tr>
+        </thead>
+		<tr>
+		 
+		</tr>
+		<tr>
+		 
+		</tr>
+		
+    </table>
+    
+	</div>
+</div >
 
 <script type="text/javascript" src="{% static "handlerJS/SingleOrderForm.js" %}"></script>
 
